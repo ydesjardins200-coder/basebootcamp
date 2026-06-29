@@ -12,11 +12,22 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
-# Long cache for static assets (they're versioned by content rarely changing)
+# Images & fonts rarely change — safe to cache for a long time
 [[headers]]
-  for = "/assets/*"
+  for = "/assets/img/*"
   [headers.values]
-    Cache-Control = "public, max-age=31536000"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# CSS/JS change often — always revalidate so updates appear immediately
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
 
 # Redirect old WordPress event URLs to the new themed-courses page
 [[redirects]]
