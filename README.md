@@ -49,3 +49,15 @@ Brancher ensuite le domaine `basebootcamp.ca` dans Netlify → Domain settings.
   (écoles, sportives, entreprises) sur ce même gabarit.
 - L'ancien site était sous WooCommerce ; le panier n'a pas été repris (aucun
   produit n'y était réellement vendu). À rediscuter si la vente en ligne revient.
+
+
+## Pages
+
+- `index.html` — accueil (hero + sélecteur de mission)
+- `ecoles.html` — sorties scolaires (25 $/élève, accompagnateurs gratuits)
+- `sportives.html` — équipes sportives (35 $/pers, coachs gratuits)
+- `entreprises.html` — corporatif / team building (forfaits méchoui, traiteur, sur mesure)
+
+CSS et JS partagés dans `assets/css/styles.css` et `assets/js/main.js`.
+Chaque page d'audience contient : hero dédié, « tout est inclus », bénéfices,
+déroulement d'une journée, FAQ, liens vers les autres missions et bloc contact.
