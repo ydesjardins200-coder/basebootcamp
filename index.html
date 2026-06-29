@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Base Bootcamp — Développez votre équipe par l'aventure | Estrie</title>
+<meta name="description" content="Course à obstacles en montagne dans l'Estrie. Une expérience unique de plein air pour les groupes scolaires, les équipes sportives et les entreprises. Depuis 2014, à Canton de Hatley.">
+<meta property="og:title" content="Base Bootcamp — Développez votre équipe par l'aventure">
+<meta property="og:description" content="Une expérience de plein air unique en Estrie pour les écoles, les équipes sportives et les entreprises.">
+<meta property="og:image" content="assets/img/hero.jpg">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_CA">
+<link rel="icon" type="image/png" href="assets/img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#15180F;
+  --field:#1E2814;
+  --field-2:#27331A;
+  --moss:#54663A;
+  --moss-soft:#92A172;
+  --sand:#ECE4CE;
+  --paper:#F7F3E8;
+  --bone:#FBF8F0;
+  --scarlet:#E83820;
+  --scarlet-deep:#C42C16;
+  --line:rgba(20,24,14,.14);
+  --line-dark:rgba(236,228,206,.16);
+  --shadow:0 18px 40px -18px rgba(21,24,15,.45);
+  --maxw:1200px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Barlow",system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  font-size:18px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{margin:0;line-height:1.02}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+/* ---- Field-tag label (signature) ---- */
+.tag{
+  font-family:"Oswald",sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-weight:600;
+  font-size:.78rem;
+  display:inline-flex;
+  align-items:center;
+  gap:.6em;
+  color:var(--scarlet);
+}
+.tag::before{content:"";width:26px;height:3px;background:var(--scarlet);display:inline-block}
+.tag.on-dark{color:#F2A99B}
+.tag.on-dark::before{background:var(--scarlet)}
+
+/* ---- Buttons ---- */
+.btn{
+  font-family:"Oswald",sans-serif;
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:600;
+  font-size:.92rem;
+  display:inline-flex;align-items:center;gap:.6em;
+  padding:15px 26px;
+  background:var(--scarlet);
+  color:#fff;
+  border:none;border-radius:2px;
+  cursor:pointer;
+  transition:background .18s ease, transform .18s ease;
+}
+.btn:hover{background:var(--scarlet-deep);transform:translateY(-2px)}
+.btn .arr{transition:transform .18s ease}
+.btn:hover .arr{transform:translateX(4px)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.btn.ghost.on-dark{color:var(--paper);border-color:rgba(236,228,206,.45)}
+.btn.ghost.on-dark:hover{background:var(--sand);color:var(--ink);border-color:var(--sand)}
+
+/* ---- Command bar ---- */
+.command{
+  background:var(--ink);color:var(--sand);
+  font-family:"Oswald",sans-serif;
+  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;font-weight:300;
+}
+.command .wrap{display:flex;justify-content:space-between;align-items:center;height:38px;gap:16px}
+.command .coord{color:var(--moss-soft)}
+.command a{color:var(--sand);transition:color .15s}
+.command a:hover{color:#fff}
+.command .right{display:flex;gap:22px;align-items:center}
+
+/* ---- Header ---- */
+.site-head{
+  position:sticky;top:0;z-index:50;
+  background:rgba(247,243,232,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:24px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{height:42px;width:auto}
+.nav{display:flex;align-items:center;gap:28px}
+.nav a{
+  font-family:"Oswald",sans-serif;text-transform:uppercase;
+  letter-spacing:.1em;font-weight:500;font-size:.84rem;
+  padding:6px 0;position:relative;color:var(--ink);
+}
+.nav a:not(.btn)::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--scarlet);transition:width .2s ease}
+.nav a:not(.btn):hover::after{width:100%}
+.nav .btn{color:#fff}
+.nav .btn::after{display:none}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:8px;flex-direction:column;gap:5px}
+.menu-toggle span{display:block;width:26px;height:2.5px;background:var(--ink);transition:.2s}
+
+/* ---- Hero ---- */
+.hero{position:relative;color:var(--sand);overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 40%}
+.hero-bg::after{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(100deg, rgba(21,24,15,.92) 0%, rgba(21,24,15,.74) 38%, rgba(21,24,15,.30) 70%, rgba(21,24,15,.55) 100%);
+}
+.hero .wrap{position:relative;z-index:2;padding:84px 24px 64px}
+.hero h1{
+  font-family:"Anton",sans-serif;
+  text-transform:uppercase;
+  font-size:clamp(2.7rem,7vw,6.1rem);
+  letter-spacing:.005em;
+  max-width:14ch;
+  margin:18px 0 0;
+  text-shadow:0 2px 30px rgba(0,0,0,.4);
+}
+.hero h1 .accent{color:var(--scarlet)}
+.hero .sub{
+  max-width:48ch;margin:22px 0 0;font-size:1.18rem;color:#EDE7D6;
+  text-shadow:0 1px 16px rgba(0,0,0,.5);
+}
+.hero .sub strong{color:#fff;font-weight:600}
+
+/* ---- Mission selector (signature) ---- */
+.missions{margin-top:42px}
+.missions .pick{
+  font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.2em;
+  font-size:.82rem;font-weight:500;color:var(--moss-soft);
+  display:flex;align-items:center;gap:10px;margin-bottom:14px;
+}
+.mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:920px}
+.mission{
+  position:relative;display:block;overflow:hidden;border-radius:3px;
+  min-height:188px;
+  border:1px solid rgba(236,228,206,.18);
+  background:#10130b;
+  transition:transform .2s ease, border-color .2s ease;
+}
+.mission img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;transition:opacity .25s ease, transform .4s ease}
+.mission::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,19,11,.15) 0%,rgba(16,19,11,.88) 100%)}
+.mission .body{position:relative;z-index:2;height:100%;min-height:188px;display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+.mission .idx{
+  position:absolute;top:14px;left:20px;z-index:2;
+  font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.18em;font-size:.7rem;
+  text-transform:uppercase;color:var(--scarlet);
+}
+.mission .label{font-family:"Oswald",sans-serif;text-transform:uppercase;font-size:.78rem;letter-spacing:.12em;color:#D8CDB0}
+.mission .name{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:1.5rem;margin-top:2px;color:#fff;line-height:1}
+.mission .go{margin-top:12px;display:inline-flex;align-items:center;gap:8px;font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;font-weight:600;color:var(--scarlet)}
+.mission .go .arr{transition:transform .2s ease}
+.mission:hover{transform:translateY(-4px);border-color:var(--scarlet)}
+.mission:hover img{opacity:.62;transform:scale(1.05)}
+.mission:hover .go .arr{transform:translateX(5px)}
+
+/* ---- Stats strip ---- */
+.stats{background:var(--scarlet);color:#fff}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0}
+.stat{padding:26px 18px;text-align:center;border-left:1px solid rgba(255,255,255,.18)}
+.stat:first-child{border-left:none}
+.stat .num{font-family:"Anton",sans-serif;font-size:2.1rem;line-height:1;letter-spacing:.01em}
+.stat .lab{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:.74rem;font-weight:400;margin-top:8px;color:#FFE3DC}
+
+/* ---- Generic section ---- */
+.section{padding:96px 0}
+.section .head{max-width:42ch;margin-bottom:46px}
+.section h2{
+  font-family:"Anton",sans-serif;text-transform:uppercase;
+  font-size:clamp(2rem,4.4vw,3.4rem);margin-top:14px;letter-spacing:.01em;
+}
+.section .lede{margin-top:14px;font-size:1.12rem;color:#41492f}
+
+/* ---- Audience deep cards ---- */
+.aud-card{
+  display:grid;grid-template-columns:1.05fr 1fr;gap:0;
+  background:var(--bone);border:1px solid var(--line);border-radius:4px;overflow:hidden;
+  margin-bottom:26px;box-shadow:var(--shadow);
+}
+.aud-card:nth-child(even){grid-template-columns:1fr 1.05fr}
+.aud-card:nth-child(even) .aud-media{order:2}
+.aud-media{position:relative;min-height:340px}
+.aud-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.aud-media .price{
+  position:absolute;left:18px;bottom:18px;
+  background:var(--ink);color:#fff;padding:9px 14px;border-radius:2px;
+  font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:.82rem;font-weight:500;
+}
+.aud-media .price b{color:var(--scarlet);font-weight:700}
+.aud-text{padding:42px}
+.aud-text h3{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:1.9rem;letter-spacing:.01em}
+.aud-text p{margin:14px 0 0;color:#41492f}
+.includes{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-wrap:wrap;gap:8px}
+.includes li{
+  font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.06em;font-size:.72rem;font-weight:500;
+  background:var(--sand);color:#3a4327;padding:6px 11px;border-radius:2px;
+}
+.aud-text .cta-row{margin-top:26px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.note{font-size:.92rem;color:#6a7252}
+
+/* ---- Experience (dark) ---- */
+.exp{
+  background:var(--field);color:var(--sand);position:relative;overflow:hidden;
+}
+.exp .contour{position:absolute;inset:0;opacity:.5;pointer-events:none}
+.exp .wrap{position:relative;z-index:2}
+.exp-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+.exp h2{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:clamp(2rem,4.4vw,3.3rem);letter-spacing:.01em}
+.exp p{margin-top:18px;color:#D6CFB7;font-size:1.1rem}
+.exp .sig{margin-top:24px;font-style:italic;color:var(--moss-soft);font-size:1.02rem;border-left:3px solid var(--scarlet);padding-left:16px}
+.features{list-style:none;padding:0;margin:0;display:grid;gap:2px;background:var(--line-dark);border:1px solid var(--line-dark);border-radius:4px;overflow:hidden}
+.features li{background:var(--field-2);padding:20px 22px;display:flex;gap:16px;align-items:baseline}
+.features .n{font-family:"Oswald",sans-serif;color:var(--scarlet);font-weight:700;font-size:.78rem;letter-spacing:.1em;min-width:34px}
+.features .t{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.04em;font-size:1rem;font-weight:500;color:#fff}
+.features .d{display:block;font-family:"Barlow";text-transform:none;letter-spacing:0;color:#BFB99F;font-size:.92rem;margin-top:3px;font-weight:400}
+
+/* ---- Autres missions ---- */
+.alt{background:var(--sand)}
+.alt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.alt-card{background:var(--bone);border:1px solid var(--line);border-radius:4px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s ease,box-shadow .2s ease}
+.alt-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.alt-card .pic{position:relative;aspect-ratio:3/2;overflow:hidden}
+.alt-card .pic img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.alt-card:hover .pic img{transform:scale(1.05)}
+.alt-card .badge{position:absolute;top:12px;left:12px;background:var(--scarlet);color:#fff;font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.68rem;font-weight:600;padding:5px 10px;border-radius:2px}
+.alt-card .c{padding:22px;display:flex;flex-direction:column;flex:1}
+.alt-card h3{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:1.3rem;letter-spacing:.01em}
+.alt-card p{font-size:.96rem;color:#41492f;margin:10px 0 0;flex:1}
+.alt-card .go{margin-top:16px;font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;font-weight:600;color:var(--scarlet);display:inline-flex;gap:8px;align-items:center}
+
+/* ---- Proof + gallery ---- */
+.proof .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;max-width:none;margin-bottom:34px}
+.media-feature{
+  display:flex;gap:14px;align-items:center;background:var(--field);color:var(--sand);
+  padding:16px 22px;border-radius:4px;
+}
+.media-feature .rc{font-family:"Anton",sans-serif;color:#fff;font-size:1.1rem;line-height:1}
+.media-feature small{display:block;color:var(--moss-soft);font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:.66rem;margin-bottom:4px}
+.media-feature .go{margin-left:auto;color:#F2A99B;font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.76rem;font-weight:600;white-space:nowrap}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.gallery a{position:relative;aspect-ratio:1;overflow:hidden;border-radius:3px}
+.gallery img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease,filter .3s}
+.gallery a:hover img{transform:scale(1.07)}
+.gallery .more{display:flex;align-items:center;justify-content:center;background:var(--ink);color:var(--sand);text-align:center;padding:14px;font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;font-weight:500;aspect-ratio:1}
+
+/* ---- Final CTA ---- */
+.final{background:var(--ink);color:var(--sand);position:relative;overflow:hidden}
+.final .contour{position:absolute;inset:0;opacity:.4;pointer-events:none}
+.final .wrap{position:relative;z-index:2}
+.final-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.final h2{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:clamp(2.1rem,4.6vw,3.5rem);letter-spacing:.01em}
+.final p{margin-top:16px;color:#CFC8B0}
+.final .cta-row{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
+.contact-card{background:var(--field-2);border:1px solid var(--line-dark);border-radius:5px;padding:8px;overflow:hidden}
+.contact-card .map{width:100%;height:200px;border:0;border-radius:3px;display:block;filter:saturate(.85) brightness(.95)}
+.contact-card .rows{padding:18px 14px 8px}
+.contact-card .row{display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--line-dark);font-size:.96rem}
+.contact-card .row:last-child{border-bottom:none}
+.contact-card .k{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.68rem;color:var(--moss-soft);min-width:78px;padding-top:2px}
+.contact-card a{color:#fff}
+.contact-card a:hover{color:#F2A99B}
+
+/* ---- Footer ---- */
+.foot{background:#0E1109;color:var(--moss-soft);padding:44px 0 30px;font-size:.86rem}
+.foot .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
+.foot img{height:38px;width:auto;opacity:.95}
+.foot .links{display:flex;gap:22px;flex-wrap:wrap;font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:.76rem}
+.foot a:hover{color:var(--sand)}
+.foot .legal{width:100%;border-top:1px solid var(--line-dark);margin-top:26px;padding-top:18px;font-size:.78rem;letter-spacing:.04em}
+
+/* ---- Responsive ---- */
+@media(max-width:900px){
+  .nav{
+    position:fixed;inset:74px 0 auto 0;background:var(--paper);
+    flex-direction:column;align-items:stretch;gap:0;
+    padding:8px 24px 24px;border-bottom:1px solid var(--line);
+    transform:translateY(-130%);transition:transform .25s ease;box-shadow:var(--shadow);
+  }
+  .nav.open{transform:translateY(0)}
+  .nav a{padding:14px 0;border-bottom:1px solid var(--line)}
+  .nav .btn{margin-top:14px;justify-content:center}
+  .menu-toggle{display:flex}
+  .mission-grid{grid-template-columns:1fr}
+  .mission{min-height:140px}.mission .body{min-height:140px}
+  .stats .wrap{grid-template-columns:1fr 1fr}
+  .stat:nth-child(3){border-left:none}
+  .aud-card,.aud-card:nth-child(even){grid-template-columns:1fr}
+  .aud-card:nth-child(even) .aud-media{order:0}
+  .aud-media{min-height:240px}
+  .aud-text{padding:30px}
+  .exp-grid{grid-template-columns:1fr;gap:38px}
+  .alt-grid{grid-template-columns:1fr}
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .final-grid{grid-template-columns:1fr;gap:34px}
+  .section{padding:70px 0}
+  .command .coord{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<!-- Command bar -->
+<div class="command">
+  <div class="wrap">
+    <span>Base plein air · Estrie · Canton de Hatley <span class="coord">— 45.27° N / 71.90° O</span></span>
+    <span class="right">
+      <a href="mailto:commandant@basebootcamp.ca">commandant@basebootcamp.ca</a>
+      <a href="https://www.facebook.com/basebootcampcanada" target="_blank" rel="noopener">Facebook</a>
+    </span>
+  </div>
+</div>
+
+<!-- Header -->
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="#" aria-label="Base Bootcamp — accueil">
+      <img src="assets/img/logo.png" alt="Base Bootcamp">
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#missions">Missions de groupe</a>
+      <a href="#autres">Parcours thématiques</a>
+      <a href="#experience">L'expérience</a>
+      <a href="#qg">Le QG</a>
+      <a class="btn" href="mailto:commandant@basebootcamp.ca?subject=Réservation%20—%20Base%20Bootcamp">Réserver une mission</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"><img src="assets/img/hero.jpg" alt="Participante couverte de boue souriant sur le parcours à obstacles"></div>
+  <div class="wrap">
+    <span class="tag on-dark">Base plein air · Estrie · Depuis 2014</span>
+    <h1>Développez votre équipe par <span class="accent">l'aventure.</span></h1>
+    <p class="sub">Une expérience unique en Estrie pour les <strong>groupes scolaires</strong>, les <strong>équipes sportives</strong> et les <strong>entreprises</strong>. De la boue, des obstacles, des fous rires — et une équipe plus soudée qu'au départ.</p>
+
+    <div class="missions">
+      <div class="pick">Choisis ta mission ↓</div>
+      <div class="mission-grid">
+        <a class="mission" href="#ecoles">
+          <img src="assets/img/g5.jpg" alt="">
+          <span class="idx">Mission 01</span>
+          <span class="body">
+            <span class="label">Je représente une</span>
+            <span class="name">École</span>
+            <span class="go">Sortie scolaire <span class="arr">→</span></span>
+          </span>
+        </a>
+        <a class="mission" href="#sportives">
+          <img src="assets/img/sportives.jpg" alt="">
+          <span class="idx">Mission 02</span>
+          <span class="body">
+            <span class="label">Je représente une</span>
+            <span class="name">Équipe sportive</span>
+            <span class="go">Souder l'équipe <span class="arr">→</span></span>
+          </span>
+        </a>
+        <a class="mission" href="#entreprises">
+          <img src="assets/img/g4.jpg" alt="">
+          <span class="idx">Mission 03</span>
+          <span class="body">
+            <span class="label">Je représente une</span>
+            <span class="name">Entreprise</span>
+            <span class="go">Team building <span class="arr">→</span></span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats">
+  <div class="wrap">
+    <div class="stat"><div class="num">4–6 km</div><div class="lab">De parcours en montagne</div></div>
+    <div class="stat"><div class="num">60</div><div class="lab">Obstacles permanents</div></div>
+    <div class="stat"><div class="num">2014</div><div class="lab">Sur le terrain depuis</div></div>
+    <div class="stat"><div class="num">0</div><div class="lab">Écran · 100 % plein air</div></div>
+  </div>
+</section>
+
+<!-- Audiences -->
+<section class="section" id="missions">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">Pour qui ?</span>
+      <h2>Trois missions, une même montagne</h2>
+      <p class="lede">Chaque groupe a son objectif. On bâtit le parcours et la journée autour du vôtre.</p>
+    </div>
+
+    <!-- Écoles -->
+    <article class="aud-card" id="ecoles">
+      <div class="aud-media">
+        <img src="assets/img/g5.jpg" alt="Élèves franchissant un obstacle de cordes sous l'arche Base Bootcamp">
+        <span class="price">À partir de <b>25 $/élève</b></span>
+      </div>
+      <div class="aud-text">
+        <span class="tag">Mission 01 · Écoles</span>
+        <h3 style="margin-top:12px">La sortie scolaire dont ils vont parler tout l'été</h3>
+        <p>Le parcours à obstacles en montagne offre aux jeunes la chance de reprendre contact avec la nature, de développer l'esprit d'équipe, l'entraide et la résilience — et tout ça sans appareil électronique.</p>
+        <ul class="includes">
+          <li>Parcours d'obstacles</li><li>Médaille</li><li>Photo souvenir</li><li>Guides</li><li>Ravitaillement en eau</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn" href="mailto:commandant@basebootcamp.ca?subject=Sortie%20scolaire%20—%20Base%20Bootcamp">Planifier une sortie <span class="arr">→</span></a>
+          <span class="note">Gratuit pour les accompagnateurs · ratio 1/12</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Équipes sportives -->
+    <article class="aud-card" id="sportives">
+      <div class="aud-media">
+        <img src="assets/img/sportives.jpg" alt="Coéquipiers couverts de boue riant dans une fosse">
+        <span class="price">À partir de <b>35 $/personne</b></span>
+      </div>
+      <div class="aud-text">
+        <span class="tag">Mission 02 · Équipes sportives</span>
+        <h3 style="margin-top:12px">Soudez l'équipe avant la saison</h3>
+        <p>Un défi physique commun qui développe la cohésion, l'entraide et la résilience. Vos athlètes repartent avec le même objectif en tête — et une fierté d'avoir traversé l'épreuve ensemble.</p>
+        <ul class="includes">
+          <li>Parcours d'obstacles</li><li>Médaille</li><li>Photo souvenir</li><li>Guides</li><li>Ravitaillement en eau</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn" href="mailto:commandant@basebootcamp.ca?subject=Équipe%20sportive%20—%20Base%20Bootcamp">Réserver pour mon équipe <span class="arr">→</span></a>
+          <span class="note">Gratuit pour les coachs</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Entreprises -->
+    <article class="aud-card" id="entreprises">
+      <div class="aud-media">
+        <img src="assets/img/g4.jpg" alt="Collègues en chandails assortis, couverts de boue, bras dessus bras dessous">
+        <span class="price">À partir de <b>35 $/personne</b></span>
+      </div>
+      <div class="aud-text">
+        <span class="tag">Mission 03 · Entreprises</span>
+        <h3 style="margin-top:12px">Le team building qui sort (vraiment) du bureau</h3>
+        <p>Team building ou party de bureau : un parcours sur mesure et accessible à tous vos employés, dans un cadre naturel unique. On s'occupe de tout, vous profitez de la journée.</p>
+        <ul class="includes">
+          <li>Parcours avec guides</li><li>Forfait méchoui</li><li>Forfait traiteur</li><li>Forfait sur mesure</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn" href="mailto:commandant@basebootcamp.ca?subject=Groupe%20corporatif%20—%20Base%20Bootcamp">Organiser notre journée <span class="arr">→</span></a>
+          <span class="note">Plusieurs forfaits disponibles</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Experience -->
+<section class="exp section" id="experience">
+  <svg class="contour" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="#92A172" stroke-width="1.2" opacity="0.5">
+      <path d="M-50 120 Q 300 40 600 120 T 1250 120"/>
+      <path d="M-50 200 Q 300 120 600 200 T 1250 200"/>
+      <path d="M-50 290 Q 320 200 600 290 T 1250 290"/>
+      <path d="M-50 380 Q 300 300 600 380 T 1250 380"/>
+      <path d="M-50 470 Q 320 390 600 470 T 1250 470"/>
+      <path d="M-50 560 Q 300 480 600 560 T 1250 560"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="exp-grid">
+      <div>
+        <span class="tag on-dark">L'expérience</span>
+        <h2 style="margin-top:14px">Reconnecter avec la nature.<br>Et avec les autres.</h2>
+        <p>Ici, pas de réseau, pas de notifications. Juste une montagne, un parcours, et le sentiment puissant de réussir quelque chose ensemble. On franchit les obstacles en s'entraidant, on se salit, on rit, et on traverse le fil d'arrivée plus soudés qu'au départ. Une ambiance festive et sécuritaire, pensée pour toute la famille comme pour les grands groupes.</p>
+        <p class="sig">« Un défi unique, sécuritaire et plaisant, dans une ambiance festive en pleine nature. » — Le commandant</p>
+      </div>
+      <ul class="features">
+        <li><span class="n">01</span><span><span class="t">Parcours de 4 à 6 km</span><span class="d">Un tracé en montagne, modulable selon le groupe.</span></span></li>
+        <li><span class="n">02</span><span><span class="t">Jusqu'à 60 obstacles</span><span class="d">Des obstacles permanents pour tous les niveaux.</span></span></li>
+        <li><span class="n">03</span><span><span class="t">Courses thématiques</span><span class="d">Chaque course est une nouvelle expérience.</span></span></li>
+        <li><span class="n">04</span><span><span class="t">Médaille au fil d'arrivée</span><span class="d">La fierté d'avoir réussi, et le souvenir qui va avec.</span></span></li>
+        <li><span class="n">05</span><span><span class="t">Sécuritaire pour tous</span><span class="d">Un circuit encadré, accessible à toute la famille.</span></span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Autres missions -->
+<section class="alt section" id="autres">
+  <div class="wrap">
+    <div class="head">
+      <span class="tag">Autres missions</span>
+      <h2>Il n'y a pas que les groupes</h2>
+    </div>
+    <div class="alt-grid">
+      <article class="alt-card">
+        <div class="pic"><span class="badge">27 juin · 10 h</span><img src="assets/img/g3.jpg" alt="Participants déguisés en super-héros sur le parcours"></div>
+        <div class="c">
+          <h3>Parcours des Super Héros</h3>
+          <p>Nos parcours thématiques transforment chaque course en aventure costumée. Une date à surveiller pour vivre la Base autrement.</p>
+          <a class="go" href="https://basebootcamp.ca/events/parcours-des-super-heros/" target="_blank" rel="noopener">Voir l'événement <span class="arr">→</span></a>
+        </div>
+      </article>
+      <article class="alt-card">
+        <div class="pic"><span class="badge">Dès 8 ans</span><img src="assets/img/g1.jpg" alt="Groupe d'enfants sur un obstacle"></div>
+        <div class="c">
+          <h3>Fêtes d'enfant</h3>
+          <p>Une fête de boue, de défis et de fous rires : des souvenirs inoubliables pour les enfants comme pour les parents. À partir de 8 participants.</p>
+          <a class="go" href="mailto:commandant@basebootcamp.ca?subject=Fête%20d'enfant%20—%20Base%20Bootcamp">À partir de 35 $/pers. <span class="arr">→</span></a>
+        </div>
+      </article>
+      <article class="alt-card">
+        <div class="pic"><span class="badge">Ta gang</span><img src="assets/img/g6.jpg" alt="Amies couvertes de boue souriant dans la nature"></div>
+        <div class="c">
+          <h3>Groupes privés</h3>
+          <p>Tu veux vivre une expérience inoubliable avec ta gang ? Réunis ton monde et venez relever le défi ensemble. Dès 8 participants (8 ans et +).</p>
+          <a class="go" href="mailto:commandant@basebootcamp.ca?subject=Groupe%20privé%20—%20Base%20Bootcamp">À partir de 35 $/pers. <span class="arr">→</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Proof + gallery -->
+<section class="proof section">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="tag">Sur le terrain</span>
+        <h2 style="font-size:clamp(1.8rem,3.6vw,2.6rem);margin-top:12px">Vu, vécu, partagé</h2>
+      </div>
+      <a class="media-feature" href="https://ici.radio-canada.ca/tele/le-telejournal-estrie/site/segments/reportage/363875/jeunes-base-bootcamp-hatley-camp-ete" target="_blank" rel="noopener">
+        <div><small>Reportage</small><span class="rc">Radio-Canada · Téléjournal Estrie</span></div>
+        <span class="go">Regarder →</span>
+      </a>
+    </div>
+    <div class="gallery">
+      <a href="https://www.facebook.com/basebootcampcanada/photos" target="_blank" rel="noopener"><img src="assets/img/g1.jpg" alt="Photo du parcours"></a>
+      <a href="https://www.facebook.com/basebootcampcanada/photos" target="_blank" rel="noopener"><img src="assets/img/g2.jpg" alt="Photo du parcours"></a>
+      <a href="https://www.facebook.com/basebootcampcanada/photos" target="_blank" rel="noopener"><img src="assets/img/g6.jpg" alt="Photo du parcours"></a>
+      <a class="more" href="https://www.facebook.com/basebootcampcanada/photos" target="_blank" rel="noopener">Voir plus sur Facebook →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA / QG -->
+<section class="final section" id="qg">
+  <svg class="contour" viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="none" stroke="#54663A" stroke-width="1.2" opacity="0.6">
+      <path d="M-50 90 Q 300 20 600 90 T 1250 90"/>
+      <path d="M-50 180 Q 320 100 600 180 T 1250 180"/>
+      <path d="M-50 270 Q 300 190 600 270 T 1250 270"/>
+      <path d="M-50 360 Q 320 280 600 360 T 1250 360"/>
+      <path d="M-50 450 Q 300 370 600 450 T 1250 450"/>
+    </g>
+  </svg>
+  <div class="wrap">
+    <div class="final-grid">
+      <div>
+        <span class="tag on-dark">Le QG</span>
+        <h2 style="margin-top:14px">Prêts à monter au front ?</h2>
+        <p>Écris au commandant avec ton type de groupe, le nombre approximatif de participants et la date visée. On te revient avec un plan de mission sur mesure.</p>
+        <div class="cta-row">
+          <a class="btn" href="mailto:commandant@basebootcamp.ca?subject=Demande%20d'information%20—%20Base%20Bootcamp">Écrire au commandant <span class="arr">→</span></a>
+          <a class="btn ghost on-dark" href="https://www.facebook.com/basebootcampcanada" target="_blank" rel="noopener">Suivre sur Facebook</a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <iframe class="map" title="Carte — Base Bootcamp" loading="lazy"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-71.9115%2C45.2660%2C-71.8895%2C45.2785&layer=mapnik&marker=45.2722%2C-71.9005"></iframe>
+        <div class="rows">
+          <div class="row"><span class="k">Adresse</span><span>4745 Chemin Capelton<br>Canton de Hatley, QC&nbsp;&nbsp;J0B 2C0<br><a href="https://www.google.com/maps/search/?api=1&query=4745+Chemin+Capelton+Canton+de+Hatley" target="_blank" rel="noopener" style="color:#F2A99B">Ouvrir dans Google&nbsp;Maps →</a></span></div>
+          <div class="row"><span class="k">Courriel</span><a href="mailto:commandant@basebootcamp.ca">commandant@basebootcamp.ca</a></div>
+          <div class="row"><span class="k">Réseaux</span><a href="https://www.facebook.com/basebootcampcanada" target="_blank" rel="noopener">facebook.com/basebootcampcanada</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="foot">
+  <div class="wrap">
+    <img src="assets/img/logo.png" alt="Base Bootcamp">
+    <nav class="links">
+      <a href="#ecoles">Écoles</a>
+      <a href="#sportives">Équipes sportives</a>
+      <a href="#entreprises">Entreprises</a>
+      <a href="#autres">Parcours thématiques</a>
+      <a href="mailto:commandant@basebootcamp.ca">Contact</a>
+    </nav>
+    <div class="legal">© 2014–2026 Base Bootcamp. Tous droits réservés. · Base plein air, Canton de Hatley, Estrie.</div>
+  </div>
+</footer>
+
+<script>
+  // Mobile nav
+  var t = document.getElementById('menuToggle'), n = document.getElementById('nav');
+  t.addEventListener('click', function(){
+    var open = n.classList.toggle('open');
+    t.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  n.addEventListener('click', function(e){
+    if(e.target.tagName === 'A'){ n.classList.remove('open'); t.setAttribute('aria-expanded','false'); }
+  });
+</script>
+</body>
+</html>
