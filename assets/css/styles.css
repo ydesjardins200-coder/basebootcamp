@@ -156,7 +156,7 @@ h1,h2,h3{margin:0;line-height:1.02}
   font-size:.82rem;font-weight:500;color:var(--moss-soft);
   display:flex;align-items:center;gap:10px;margin-bottom:14px;
 }
-.mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:920px}
+.mission-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
 .mission{
   position:relative;display:block;overflow:hidden;border-radius:5px;
   min-height:198px;
@@ -174,7 +174,7 @@ h1,h2,h3{margin:0;line-height:1.02}
   text-transform:uppercase;color:var(--scarlet);
 }
 .mission .label{font-family:"Oswald",sans-serif;text-transform:uppercase;font-size:.78rem;letter-spacing:.12em;color:#D8CDB0}
-.mission .name{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:1.7rem;margin-top:2px;color:#fff;line-height:1}
+.mission .name{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:clamp(1.3rem,1.45vw,1.55rem);margin-top:2px;color:#fff;line-height:1}
 .mission .go{margin-top:12px;display:inline-flex;align-items:center;gap:8px;font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;font-weight:600;color:var(--scarlet)}
 .mission .go .arr{transition:transform .2s ease}
 .mission:hover{transform:translateY(-4px);border-color:var(--scarlet)}
@@ -307,7 +307,7 @@ h1,h2,h3{margin:0;line-height:1.02}
   .nav a{padding:14px 0;border-bottom:1px solid var(--line)}
   .nav .btn{margin-top:14px;justify-content:center}
   .menu-toggle{display:flex}
-  .mission-grid{grid-template-columns:1fr}
+  .mission-grid{grid-template-columns:repeat(2,1fr)}
   .mission{min-height:140px}.mission .body{min-height:140px}
   .stats .wrap{grid-template-columns:1fr 1fr}
   .stat:nth-child(3){border-left:none}
