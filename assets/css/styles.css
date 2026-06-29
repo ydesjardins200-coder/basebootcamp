@@ -48,26 +48,44 @@ h1,h2,h3{margin:0;line-height:1.02}
 
 /* ---- Buttons ---- */
 .btn{
+  position:relative;overflow:hidden;
   font-family:"Oswald",sans-serif;
   text-transform:uppercase;
   letter-spacing:.12em;
   font-weight:600;
   font-size:.92rem;
-  display:inline-flex;align-items:center;gap:.6em;
-  padding:15px 26px;
-  background:var(--scarlet);
+  display:inline-flex;align-items:center;justify-content:center;gap:.6em;
+  padding:15px 28px;
   color:#fff;
-  border:none;border-radius:2px;
+  border:none;border-radius:5px;
   cursor:pointer;
-  transition:background .18s ease, transform .18s ease;
+  background:linear-gradient(180deg,#F2502F 0%, var(--scarlet) 52%, var(--scarlet-deep) 100%);
+  box-shadow:0 4px 0 #9c2410, 0 12px 22px -10px rgba(232,56,32,.65);
+  text-shadow:0 1px 0 rgba(0,0,0,.18);
+  transition:transform .12s cubic-bezier(.3,.7,.3,1), box-shadow .12s ease, filter .12s ease;
+  -webkit-tap-highlight-color:transparent;
 }
-.btn:hover{background:var(--scarlet-deep);transform:translateY(-2px)}
+/* sheen sweep on hover */
+.btn::before{content:"";position:absolute;top:0;left:-130%;width:60%;height:100%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.38),transparent);
+  transform:skewX(-18deg);transition:left .55s ease;pointer-events:none}
+.btn:hover::before{left:140%}
+.btn:hover{transform:translateY(-2px);box-shadow:0 6px 0 #9c2410, 0 18px 30px -10px rgba(232,56,32,.75);filter:brightness(1.05)}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #9c2410, 0 6px 14px -8px rgba(232,56,32,.6)}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
 .btn .arr{transition:transform .18s ease}
-.btn:hover .arr{transform:translateX(4px)}
-.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
-.btn.ghost:hover{background:var(--ink);color:var(--paper)}
-.btn.ghost.on-dark{color:var(--paper);border-color:rgba(236,228,206,.45)}
-.btn.ghost.on-dark:hover{background:var(--sand);color:var(--ink);border-color:var(--sand)}
+.btn:hover .arr{transform:translateX(5px)}
+.btn.big{font-size:1.02rem;padding:18px 34px;letter-spacing:.14em}
+
+/* ghost — flatter but still tactile */
+.btn.ghost{background:var(--paper);color:var(--ink);border:2px solid var(--ink);
+  box-shadow:0 4px 0 rgba(21,24,15,.85);text-shadow:none}
+.btn.ghost::before{display:none}
+.btn.ghost:hover{background:var(--ink);color:var(--paper);filter:none;box-shadow:0 6px 0 rgba(21,24,15,.85)}
+.btn.ghost:active{box-shadow:0 1px 0 rgba(21,24,15,.85)}
+.btn.ghost.on-dark{background:transparent;color:var(--paper);border-color:rgba(236,228,206,.5);box-shadow:0 4px 0 rgba(236,228,206,.22)}
+.btn.ghost.on-dark:hover{background:var(--sand);color:var(--ink);border-color:var(--sand);box-shadow:0 6px 0 rgba(236,228,206,.3)}
+.btn.ghost.on-dark:active{box-shadow:0 1px 0 rgba(236,228,206,.22)}
 
 /* ---- Command bar ---- */
 .command{
@@ -88,9 +106,10 @@ h1,h2,h3{margin:0;line-height:1.02}
   backdrop-filter:blur(8px);
   border-bottom:1px solid var(--line);
 }
-.site-head .wrap{display:flex;align-items:center;justify-content:space-between;height:74px;gap:24px}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;height:90px;gap:24px}
 .brand{display:flex;align-items:center;gap:12px}
-.brand img{height:42px;width:auto}
+.brand img{height:60px;width:auto;transition:transform .2s ease}
+.brand:hover img{transform:scale(1.04)}
 .nav{display:flex;align-items:center;gap:28px}
 .nav a{
   font-family:"Oswald",sans-serif;text-transform:uppercase;
@@ -270,7 +289,7 @@ h1,h2,h3{margin:0;line-height:1.02}
 /* ---- Footer ---- */
 .foot{background:#0E1109;color:var(--moss-soft);padding:44px 0 30px;font-size:.86rem}
 .foot .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:center}
-.foot img{height:38px;width:auto;opacity:.95}
+.foot img{height:52px;width:auto;opacity:.97}
 .foot .links{display:flex;gap:22px;flex-wrap:wrap;font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:.76rem}
 .foot a:hover{color:var(--sand)}
 .foot .legal{width:100%;border-top:1px solid var(--line-dark);margin-top:26px;padding-top:18px;font-size:.78rem;letter-spacing:.04em}
@@ -278,7 +297,7 @@ h1,h2,h3{margin:0;line-height:1.02}
 /* ---- Responsive ---- */
 @media(max-width:900px){
   .nav{
-    position:fixed;inset:74px 0 auto 0;background:var(--paper);
+    position:fixed;inset:90px 0 auto 0;background:var(--paper);
     flex-direction:column;align-items:stretch;gap:0;
     padding:8px 24px 24px;border-bottom:1px solid var(--line);
     transform:translateY(-130%);transition:transform .25s ease;box-shadow:var(--shadow);
@@ -303,7 +322,8 @@ h1,h2,h3{margin:0;line-height:1.02}
   .command .coord{display:none}
 }
 @media(prefers-reduced-motion:reduce){
-  *{transition:none!important;scroll-behavior:auto!important}
+  *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1!important;transform:none!important}
 }
 
 /* ============================================================
@@ -413,3 +433,74 @@ h1,h2,h3{margin:0;line-height:1.02}
 /* active nav item */
 .nav a[aria-current="page"]::after{width:100%}
 .nav a[aria-current="page"]{color:var(--scarlet)}
+
+/* ============================================================
+   PREMIUM POLISH LAYER (motion, reveals, sticky CTA, form, depth)
+   ============================================================ */
+
+html{scroll-padding-top:104px}
+[id]{scroll-margin-top:104px}
+
+/* --- Hero: slow Ken Burns + staggered entrance --- */
+@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.13)}}
+.hero-bg img{animation:kenburns 20s ease-out forwards;transform-origin:62% 42%}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.hero .tag{animation:rise .7s .05s both}
+.hero h1{animation:rise .85s .16s both}
+.hero .sub{animation:rise .85s .30s both}
+.hero .missions{animation:rise .85s .46s both}
+.hero .trust{animation:rise .85s .60s both}
+
+/* --- Scroll reveal --- */
+.reveal{opacity:0;transform:translateY(26px);
+  transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+/* --- Mission cards: more alive --- */
+.mission{box-shadow:0 10px 30px -16px rgba(0,0,0,.6)}
+.mission .accentbar{position:absolute;left:0;bottom:0;height:4px;width:0;background:var(--scarlet);z-index:3;transition:width .3s ease}
+.mission:hover{transform:translateY(-6px)}
+.mission:hover .accentbar{width:100%}
+
+/* --- Card depth polish --- */
+.aud-card{transition:transform .25s ease, box-shadow .25s ease}
+.aud-card:hover{transform:translateY(-4px);box-shadow:0 30px 60px -28px rgba(21,24,15,.5)}
+.alt-card,.forfait,.compris-grid .item{transition:transform .22s ease, box-shadow .22s ease, border-color .22s ease}
+.forfait:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:var(--scarlet)}
+.compris-grid .item:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:rgba(232,56,32,.4)}
+
+/* --- Hero trust line --- */
+.hero .trust{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;
+  font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.74rem;color:#CFC8B0}
+.hero .trust .dot{width:5px;height:5px;border-radius:50%;background:var(--scarlet);display:inline-block;margin-right:14px;vertical-align:middle}
+.hero .trust b{color:#fff;font-weight:600}
+
+/* --- Sticky mobile booking bar --- */
+.mobile-cta{display:none}
+@media(max-width:900px){
+  .mobile-cta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:60;gap:10px;
+    padding:11px 14px calc(11px + env(safe-area-inset-bottom));
+    background:rgba(14,17,9,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line-dark)}
+  .mobile-cta .btn{flex:1}
+  body{padding-bottom:76px}
+}
+
+/* --- Booking form (dark) --- */
+.lead-form{margin-top:24px;display:grid;gap:14px}
+.lead-form .f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.lead-form label{display:flex;flex-direction:column;gap:7px;
+  font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.7rem;color:var(--moss-soft)}
+.lead-form input,.lead-form select,.lead-form textarea{
+  font-family:"Barlow",sans-serif;font-size:1rem;color:#fff;
+  background:var(--field-2);border:1px solid var(--line-dark);border-radius:5px;padding:12px 14px;
+  text-transform:none;letter-spacing:0;transition:border-color .15s, box-shadow .15s;width:100%}
+.lead-form select{appearance:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='none' stroke='%2392A172' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' d='M6 9l6 6 6-6'/></svg>");
+  background-repeat:no-repeat;background-position:right 12px center;background-size:18px;padding-right:40px}
+.lead-form input::placeholder,.lead-form textarea::placeholder{color:#7d8466}
+.lead-form input:focus,.lead-form select:focus,.lead-form textarea:focus{
+  outline:none;border-color:var(--scarlet);box-shadow:0 0 0 3px rgba(232,56,32,.25)}
+.lead-form .btn{margin-top:4px}
+.lead-form .f-note{font-family:"Barlow";text-transform:none;letter-spacing:0;color:#9aa07f;font-size:.86rem;margin:2px 0 0}
+.lead-form .hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+@media(max-width:560px){.lead-form .f-row{grid-template-columns:1fr}}

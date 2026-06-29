@@ -7,10 +7,18 @@
 <meta name="description" content="Course à obstacles en montagne dans l'Estrie. Une expérience unique de plein air pour les groupes scolaires, les équipes sportives et les entreprises. Depuis 2014, à Canton de Hatley.">
 <meta property="og:title" content="Base Bootcamp — Développez votre équipe par l'aventure">
 <meta property="og:description" content="Une expérience de plein air unique en Estrie pour les écoles, les équipes sportives et les entreprises.">
-<meta property="og:image" content="assets/img/hero.jpg">
+<meta property="og:image" content="https://basebootcamp.netlify.app/assets/img/hero.jpg">
+<meta property="og:url" content="https://basebootcamp.netlify.app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Base Bootcamp — Développez votre équipe par l'aventure">
+<meta name="twitter:description" content="Une expérience de plein air unique en Estrie pour les écoles, les équipes sportives et les entreprises.">
+<meta name="twitter:image" content="https://basebootcamp.netlify.app/assets/img/hero.jpg">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_CA">
-<link rel="icon" type="image/png" href="assets/img/logo.png">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+<link rel="icon" href="assets/img/favicon.ico" sizes="any">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@300;400;500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -88,6 +96,12 @@
         </a>
       </div>
     </div>
+    <div class="trust">
+        <span><span class="dot"></span><b>Depuis 2014</b></span>
+        <span><span class="dot"></span>Vu au Téléjournal Estrie · <b>Radio-Canada</b></span>
+        <span><span class="dot"></span><b>4&nbsp;–&nbsp;6 km</b> · jusqu'à 60 obstacles</span>
+        <span><span class="dot"></span>Canton de Hatley, Estrie</span>
+      </div>
   </div>
 </section>
 
@@ -278,10 +292,33 @@
         <span class="tag on-dark">Le QG</span>
         <h2 style="margin-top:14px">Prêts à monter au front ?</h2>
         <p>Écris au commandant avec ton type de groupe, le nombre approximatif de participants et la date visée. On te revient avec un plan de mission sur mesure.</p>
-        <div class="cta-row">
-          <a class="btn" href="mailto:commandant@basebootcamp.ca?subject=Demande%20d'information%20—%20Base%20Bootcamp">Écrire au commandant <span class="arr">→</span></a>
-          <a class="btn ghost on-dark" href="https://www.facebook.com/basebootcampcanada" target="_blank" rel="noopener">Suivre sur Facebook</a>
-        </div>
+        <form name="reservation" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="lead-form" id="reserver">
+          <input type="hidden" name="form-name" value="reservation">
+          <p class="hp"><label>Ne pas remplir <input name="bot-field"></label></p>
+          <div class="f-row">
+            <label>Type de groupe
+              <select name="type" required>
+                <option value="">Choisir…</option>
+                <option>École</option>
+                <option>Équipe sportive</option>
+                <option>Entreprise</option>
+                <option>Fête d'enfant</option>
+                <option>Groupe privé</option>
+              </select>
+            </label>
+            <label>Nombre de participants
+              <input name="participants" type="text" inputmode="numeric" placeholder="ex. 30">
+            </label>
+          </div>
+          <div class="f-row">
+            <label>Nom <input name="nom" type="text" required></label>
+            <label>Courriel <input name="courriel" type="email" required></label>
+          </div>
+          <label>Date visée <input name="date" type="text" placeholder="ex. semaine du 15 mai"></label>
+          <label>Message <textarea name="message" rows="3" placeholder="Parlez-nous de votre projet…"></textarea></label>
+          <button class="btn big" type="submit">Demander un plan de mission <span class="arr">→</span></button>
+          <p class="f-note">Réponse rapide du commandant. Sans engagement.</p>
+        </form>
       </div>
       <div class="contact-card">
         <iframe class="map" title="Carte — Base Bootcamp" loading="lazy"
@@ -310,6 +347,10 @@
     <div class="legal">© 2014–2026 Base Bootcamp. Tous droits réservés. · Base plein air, Canton de Hatley, Estrie.</div>
   </div>
 </footer>
+
+<div class="mobile-cta">
+  <a class="btn" href="#reserver">Réserver une mission <span class="arr">→</span></a>
+</div>
 
 <script src="assets/js/main.js"></script>
 </body>
