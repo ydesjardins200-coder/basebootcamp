@@ -555,3 +555,25 @@ html{scroll-padding-top:104px}
   .ev-facts{grid-template-columns:1fr}
   .price-table{font-size:.84rem}.price-table th,.price-table td{padding:9px 6px}
 }
+
+/* ============================================================
+   CTA 24 H — bande de soumission (milieu + bas de page)
+   ============================================================ */
+.cta24{background:linear-gradient(180deg,#EE4A2C 0%, var(--scarlet) 60%, var(--scarlet-deep) 100%);color:#fff;position:relative;overflow:hidden}
+.cta24::after{content:"";position:absolute;inset:0;opacity:.10;pointer-events:none;
+  background:repeating-linear-gradient(135deg, #fff 0 2px, transparent 2px 26px)}
+.cta24 .wrap{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:30px;padding:50px 24px;flex-wrap:wrap}
+.cta24 .t{max-width:42ch}
+.cta24 .eyebrow{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:.74rem;font-weight:600;color:#FFE0D8;display:inline-flex;align-items:center;gap:9px}
+.cta24 .eyebrow .ic{width:16px;height:16px}
+.cta24 .eyebrow .ic svg{width:100%;height:100%;stroke:#FFE0D8;fill:none;stroke-width:2}
+.cta24 h2{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:clamp(1.55rem,3.2vw,2.5rem);line-height:1.04;margin:10px 0 0;letter-spacing:.01em;text-shadow:0 1px 14px rgba(0,0,0,.18)}
+.btn.onred{background:#fff;color:var(--scarlet);
+  box-shadow:0 4px 0 rgba(120,22,10,.55), 0 14px 26px -12px rgba(0,0,0,.5);text-shadow:none;white-space:nowrap}
+.btn.onred::before{background:linear-gradient(100deg,transparent,rgba(232,56,32,.16),transparent)}
+.btn.onred:hover{background:#fff;filter:brightness(1);box-shadow:0 6px 0 rgba(120,22,10,.55), 0 18px 30px -12px rgba(0,0,0,.55)}
+.btn.onred:active{box-shadow:0 1px 0 rgba(120,22,10,.55)}
+@media(max-width:760px){
+  .cta24 .wrap{flex-direction:column;align-items:flex-start;gap:22px;padding:42px 24px}
+  .cta24 .btn{width:100%}
+}
