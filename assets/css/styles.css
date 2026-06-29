@@ -15,7 +15,7 @@
   --maxw:1200px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:clip}
 body{
   margin:0;
   font-family:"Barlow",system-ui,sans-serif;
@@ -301,12 +301,14 @@ h1,h2,h3{margin:0;line-height:1.02}
     position:fixed;inset:90px 0 auto 0;background:var(--paper);
     flex-direction:column;align-items:stretch;gap:0;
     padding:8px 24px 24px;border-bottom:1px solid var(--line);
-    transform:translateY(-130%);transition:transform .25s ease;box-shadow:var(--shadow);
+    transform:translateY(-130%);transition:transform .25s ease, visibility 0s .25s;
+    visibility:hidden;box-shadow:var(--shadow);
   }
-  .nav.open{transform:translateY(0)}
+  .nav.open{transform:translateY(0);visibility:visible;transition:transform .25s ease}
   .nav a{padding:14px 0;border-bottom:1px solid var(--line)}
-  .nav .btn{margin-top:14px;justify-content:center}
+  .nav .btn{display:none}
   .menu-toggle{display:flex}
+  .command{display:none}
   .mission-grid{grid-template-columns:repeat(2,1fr)}
   .mission{min-height:140px}.mission .body{min-height:140px}
   .stats .wrap{grid-template-columns:1fr 1fr}
@@ -320,7 +322,6 @@ h1,h2,h3{margin:0;line-height:1.02}
   .gallery{grid-template-columns:repeat(2,1fr)}
   .final-grid{grid-template-columns:1fr;gap:34px}
   .section{padding:70px 0}
-  .command .coord{display:none}
 }
 @media(prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
