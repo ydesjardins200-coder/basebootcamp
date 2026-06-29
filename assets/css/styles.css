@@ -594,3 +594,20 @@ html{scroll-padding-top:104px}
 /* Sportives — groupes de mentions */
 .mention-group + .mention-group{margin-top:24px}
 .mg-label{display:block;font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:.72rem;font-weight:600;color:var(--moss);margin:0 0 10px}
+
+/* ============================================================
+   MERCI / confirmation de soumission
+   ============================================================ */
+.thanks{min-height:calc(100vh - 90px);display:grid;place-items:center;text-align:center;
+  background:var(--field);color:var(--sand);position:relative;overflow:hidden;padding:90px 24px}
+.thanks .contour{position:absolute;inset:0;opacity:.45;pointer-events:none}
+.thanks .inner{position:relative;z-index:2;max-width:600px;margin:0 auto}
+.thanks .medal{width:88px;height:88px;margin:0 auto 26px;border-radius:50%;background:var(--scarlet);
+  display:grid;place-items:center;box-shadow:0 16px 34px -12px rgba(0,0,0,.6)}
+.thanks .medal svg{width:46px;height:46px;stroke:#fff;fill:none;stroke-width:2.8;stroke-linecap:round;stroke-linejoin:round}
+.thanks .tag{justify-content:center}
+.thanks h1{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:clamp(2.3rem,6vw,3.9rem);
+  letter-spacing:.01em;margin-top:8px}
+.thanks h1 .accent{color:var(--scarlet)}
+.thanks p{margin:18px auto 0;font-size:1.15rem;color:#E7E0CB;max-width:46ch}
+.thanks .cta-row{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
