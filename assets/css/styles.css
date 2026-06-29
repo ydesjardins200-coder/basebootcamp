@@ -512,3 +512,46 @@ html{scroll-padding-top:104px}
 .mission{box-shadow:0 20px 44px -20px rgba(0,0,0,.85)}
 .mission:hover{transform:translateY(-6px);border-color:rgba(236,228,206,.6);box-shadow:0 30px 60px -22px rgba(0,0,0,.92)}
 .mission .idx{background:rgba(13,16,8,.55);padding:4px 9px;border-radius:3px;backdrop-filter:blur(2px)}
+
+/* ============================================================
+   EVENTS / PARCOURS THÉMATIQUES
+   ============================================================ */
+.evsec{background:var(--field);color:var(--sand);position:relative;overflow:hidden}
+.evsec .contour{position:absolute;inset:0;opacity:.5;pointer-events:none}
+.evsec .wrap{position:relative;z-index:2}
+.ev-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+.ev-banner{border-radius:6px;overflow:hidden;border:1px solid var(--line-dark);box-shadow:0 30px 60px -28px rgba(0,0,0,.7)}
+.ev-banner img{display:block;width:100%}
+.status-callout{display:flex;gap:13px;align-items:flex-start;background:var(--field-2);
+  border:1px solid var(--line-dark);border-left:4px solid var(--scarlet);border-radius:5px;
+  padding:15px 18px;color:var(--sand);margin:18px 0 22px}
+.status-callout .ic{flex:0 0 auto;width:22px;height:22px;color:var(--scarlet);margin-top:1px}
+.status-callout .ic svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.7}
+.status-callout b{color:#fff}
+.status-callout .small{font-size:.92rem;color:#CFC8B0}
+.evsec h2{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:clamp(2rem,4.2vw,3.1rem);letter-spacing:.01em}
+.evsec .tagline{margin-top:14px;font-size:1.12rem;color:#E7E0CB}
+.ev-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--line-dark);
+  border:1px solid var(--line-dark);border-radius:5px;overflow:hidden;margin-top:22px}
+.ev-facts .f{background:var(--field-2);padding:16px 18px;display:flex;gap:13px;align-items:flex-start}
+.ev-facts .fic{flex:0 0 auto;width:22px;height:22px;color:var(--scarlet);margin-top:2px}
+.ev-facts .fic svg{width:100%;height:100%;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.ev-facts .k{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.66rem;color:var(--moss-soft)}
+.ev-facts .v{font-family:"Oswald",sans-serif;font-weight:500;font-size:1rem;color:#fff;margin-top:3px}
+.ev-cta{margin-top:26px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.ev-cta .cal{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;font-weight:600;color:#F2A99B;display:inline-flex;gap:8px;align-items:center}
+
+.price-table{width:100%;border-collapse:collapse;margin-top:10px;font-family:"Barlow",sans-serif}
+.price-table caption{caption-side:top;text-align:left;font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.08em;font-size:.74rem;color:#6a7252;margin-bottom:10px}
+.price-table th,.price-table td{padding:13px 12px;text-align:center;border:1px solid var(--line)}
+.price-table thead th{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.04em;font-size:.72rem;background:var(--ink);color:var(--sand);font-weight:500}
+.price-table tbody th{text-align:left;font-family:"Oswald",sans-serif;text-transform:uppercase;font-size:.82rem;background:var(--sand);color:var(--ink)}
+.price-table td{background:var(--bone);color:#33391f;font-weight:500}
+.price-table thead th.reg,.price-table td.reg{background:#FDEEEA}
+.price-table td.reg{color:var(--scarlet);font-weight:700}
+.price-note{font-size:.86rem;color:#6a7252;margin-top:12px}
+@media(max-width:640px){
+  .ev-grid{grid-template-columns:1fr;gap:30px}
+  .ev-facts{grid-template-columns:1fr}
+  .price-table{font-size:.84rem}.price-table th,.price-table td{padding:9px 6px}
+}

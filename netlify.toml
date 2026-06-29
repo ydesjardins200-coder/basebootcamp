@@ -17,3 +17,19 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000"
+
+# Redirect old WordPress event URLs to the new themed-courses page
+[[redirects]]
+  from = "/evenement"
+  to = "/parcours-thematiques"
+  status = 301
+
+[[redirects]]
+  from = "/evenement/*"
+  to = "/parcours-thematiques"
+  status = 301
+
+[[redirects]]
+  from = "/events/*"
+  to = "/parcours-thematiques"
+  status = 301
