@@ -23,7 +23,7 @@ document.querySelectorAll('.mission').forEach(function (m) {
   var sel = ['.section .head', '.aud-card', '.stat', '.compris-grid .item',
     '.forfait', '.steps .step', '.alt-card', '.cross-card', '.features li',
     '.values-row .v', '.gallery a', '.media-feature', '.split-grid > *',
-    '.contact-card', '.lead-form', '.mission'];
+    '.contact-card', '.lead-form'];
   var els = [];
   sel.forEach(function (s) { document.querySelectorAll(s).forEach(function (e) { els.push(e); }); });
   if (reduce || !('IntersectionObserver' in window)) return;

@@ -126,21 +126,21 @@ h1,h2,h3{margin:0;line-height:1.02}
 /* ---- Hero ---- */
 .hero{position:relative;color:var(--sand);overflow:hidden}
 .hero-bg{position:absolute;inset:0;z-index:0}
-.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:60% 40%}
+.hero-bg img{width:100%;height:100%;object-fit:cover;object-position:38% 38%}
 .hero-bg::after{
   content:"";position:absolute;inset:0;
   background:
-    linear-gradient(100deg, rgba(21,24,15,.92) 0%, rgba(21,24,15,.74) 38%, rgba(21,24,15,.30) 70%, rgba(21,24,15,.55) 100%);
+    linear-gradient(100deg, rgba(21,24,15,.94) 0%, rgba(21,24,15,.80) 30%, rgba(21,24,15,.32) 60%, rgba(21,24,15,.18) 100%);
 }
-.hero .wrap{position:relative;z-index:2;padding:84px 24px 64px}
+.hero .wrap{position:relative;z-index:2;padding:60px 24px 44px}
 .hero h1{
   font-family:"Anton",sans-serif;
   text-transform:uppercase;
-  font-size:clamp(2.7rem,7vw,6.1rem);
+  font-size:clamp(2.6rem,6vw,5.4rem);
   letter-spacing:.005em;
-  max-width:14ch;
+  max-width:15ch;
   margin:18px 0 0;
-  text-shadow:0 2px 30px rgba(0,0,0,.4);
+  text-shadow:0 2px 30px rgba(0,0,0,.45);
 }
 .hero h1 .accent{color:var(--scarlet)}
 .hero .sub{
@@ -158,22 +158,23 @@ h1,h2,h3{margin:0;line-height:1.02}
 }
 .mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:920px}
 .mission{
-  position:relative;display:block;overflow:hidden;border-radius:3px;
-  min-height:188px;
-  border:1px solid rgba(236,228,206,.18);
-  background:#10130b;
-  transition:transform .2s ease, border-color .2s ease;
+  position:relative;display:block;overflow:hidden;border-radius:5px;
+  min-height:198px;
+  border:1px solid rgba(236,228,206,.34);
+  border-bottom:3px solid var(--scarlet);
+  background:#0d1008;
+  transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
-.mission img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;transition:opacity .25s ease, transform .4s ease}
-.mission::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,19,11,.15) 0%,rgba(16,19,11,.88) 100%)}
-.mission .body{position:relative;z-index:2;height:100%;min-height:188px;display:flex;flex-direction:column;justify-content:flex-end;padding:20px}
+.mission img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.64;transition:opacity .25s ease, transform .4s ease}
+.mission::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,16,8,.04) 0%,rgba(13,16,8,.52) 52%,rgba(13,16,8,.93) 100%)}
+.mission .body{position:relative;z-index:2;height:100%;min-height:198px;display:flex;flex-direction:column;justify-content:flex-end;padding:22px}
 .mission .idx{
   position:absolute;top:14px;left:20px;z-index:2;
   font-family:"Oswald",sans-serif;font-weight:600;letter-spacing:.18em;font-size:.7rem;
   text-transform:uppercase;color:var(--scarlet);
 }
 .mission .label{font-family:"Oswald",sans-serif;text-transform:uppercase;font-size:.78rem;letter-spacing:.12em;color:#D8CDB0}
-.mission .name{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:1.5rem;margin-top:2px;color:#fff;line-height:1}
+.mission .name{font-family:"Anton",sans-serif;text-transform:uppercase;font-size:1.7rem;margin-top:2px;color:#fff;line-height:1}
 .mission .go{margin-top:12px;display:inline-flex;align-items:center;gap:8px;font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;font-weight:600;color:var(--scarlet)}
 .mission .go .arr{transition:transform .2s ease}
 .mission:hover{transform:translateY(-4px);border-color:var(--scarlet)}
@@ -442,8 +443,8 @@ html{scroll-padding-top:104px}
 [id]{scroll-margin-top:104px}
 
 /* --- Hero: slow Ken Burns + staggered entrance --- */
-@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.13)}}
-.hero-bg img{animation:kenburns 20s ease-out forwards;transform-origin:62% 42%}
+@keyframes kenburns{from{transform:scale(1.02)}to{transform:scale(1.08)}}
+.hero-bg img{animation:kenburns 22s ease-out forwards;transform-origin:40% 40%}
 @keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
 .hero .tag{animation:rise .7s .05s both}
 .hero h1{animation:rise .85s .16s both}
@@ -470,7 +471,7 @@ html{scroll-padding-top:104px}
 .compris-grid .item:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:rgba(232,56,32,.4)}
 
 /* --- Hero trust line --- */
-.hero .trust{margin-top:20px;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;
+.hero .trust{margin-top:14px;display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;
   font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.74rem;color:#CFC8B0}
 .hero .trust .dot{width:5px;height:5px;border-radius:50%;background:var(--scarlet);display:inline-block;margin-right:14px;vertical-align:middle}
 .hero .trust b{color:#fff;font-weight:600}
@@ -504,3 +505,10 @@ html{scroll-padding-top:104px}
 .lead-form .f-note{font-family:"Barlow";text-transform:none;letter-spacing:0;color:#9aa07f;font-size:.86rem;margin:2px 0 0}
 .lead-form .hp{position:absolute;left:-9999px;height:0;overflow:hidden}
 @media(max-width:560px){.lead-form .f-row{grid-template-columns:1fr}}
+
+/* ---- Tweaks: header CTA padding, card standout, hero lift ---- */
+.site-head .nav .btn{padding:16px 32px}
+.missions{margin-top:26px}
+.mission{box-shadow:0 20px 44px -20px rgba(0,0,0,.85)}
+.mission:hover{transform:translateY(-6px);border-color:rgba(236,228,206,.6);box-shadow:0 30px 60px -22px rgba(0,0,0,.92)}
+.mission .idx{background:rgba(13,16,8,.55);padding:4px 9px;border-radius:3px;backdrop-filter:blur(2px)}
