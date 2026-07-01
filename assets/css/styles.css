@@ -697,7 +697,7 @@ html{scroll-padding-top:104px}
   background:
     linear-gradient(95deg,rgba(13,14,10,.93) 0%,rgba(13,14,10,.8) 36%,rgba(13,14,10,.42) 66%,rgba(13,14,10,.6) 100%),
     linear-gradient(0deg,rgba(13,14,10,.78) 0%,rgba(13,14,10,0) 44%)}
-.hero-photo .wrap{position:relative;z-index:2;min-height:66vh;display:flex;flex-direction:column;justify-content:flex-end;padding:130px 24px 58px}
+.hero-photo .wrap{position:relative;z-index:2;min-height:48vh;display:flex;flex-direction:column;justify-content:flex-end;padding:110px 24px 44px}
 .hero-photo .ho-text{max-width:650px}
 .hero-photo .ho-note{color:#C9C3AC}
 .hero-photo .price-badge{position:absolute;right:30px;top:50%;transform:translateY(-50%)}
