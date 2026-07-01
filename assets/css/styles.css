@@ -9,6 +9,8 @@
   --bone:#FBF8F0;
   --scarlet:#E83820;
   --scarlet-deep:#C42C16;
+  --olive:#7C8C2F;
+  --olive-deep:#5f6a23;
   --line:rgba(20,24,14,.14);
   --line-dark:rgba(236,228,206,.16);
   --shadow:0 18px 40px -18px rgba(21,24,15,.45);
@@ -613,3 +615,76 @@ html{scroll-padding-top:104px}
 .thanks h1 .accent{color:var(--scarlet)}
 .thanks p{margin:18px auto 0;font-size:1.15rem;color:#E7E0CB;max-width:46ch}
 .thanks .cta-row{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+
+/* ============================================================
+   SPORTIVES — hero olive (harmonisé avec la pub) + valeurs pastilles
+   ============================================================ */
+.hero-olive{background:#0d0e0a}
+.hero-olive .bg{display:none}
+.hero-olive .wrap{min-height:auto;display:block;padding:60px 24px 46px}
+.ho-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+.hero-olive .breadcrumb{color:var(--olive);margin-bottom:16px}
+.hero-olive .breadcrumb a{color:#BFC79A}
+.hero-olive .breadcrumb a:hover{color:#fff}
+.hero-olive .breadcrumb .sep{color:var(--olive)}
+.ho-eyebrow{display:inline-block;font-family:"Oswald",sans-serif;text-transform:uppercase;
+  letter-spacing:.15em;font-weight:600;font-size:.86rem;color:#0d0e0a;background:var(--olive);
+  padding:6px 15px;transform:skewX(-7deg);margin-bottom:20px}
+.ho-eyebrow span{display:inline-block;transform:skewX(7deg)}
+.hero-olive h1{font-family:"Anton",sans-serif;text-transform:uppercase;
+  font-size:clamp(2.7rem,6.2vw,5rem);line-height:.9;letter-spacing:.01em;color:#fff;
+  text-shadow:none;max-width:none}
+.hero-olive h1 .olive{color:var(--olive);display:block}
+.ho-tags{margin-top:22px;font-family:"Oswald",sans-serif;text-transform:uppercase;
+  letter-spacing:.07em;font-weight:500;font-size:1rem;color:#EDE7D6}
+.ho-tags b{color:var(--olive);margin:0 7px;font-weight:700}
+.hero-olive .cta-row{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap}
+.ho-media{position:relative}
+.ho-media>img{width:100%;aspect-ratio:4/3.3;object-fit:cover;object-position:center 30%;
+  border-radius:4px;box-shadow:0 22px 48px -20px rgba(0,0,0,.85)}
+.price-badge{position:absolute;right:-8px;bottom:-24px;width:154px;height:154px;border-radius:50%;
+  background:var(--olive);border:4px solid #0d0e0a;box-shadow:0 14px 32px -10px rgba(0,0,0,.75);
+  display:grid;place-content:center;text-align:center;color:#fff;line-height:1}
+.price-badge .pb-top{display:block;font-family:"Oswald",sans-serif;text-transform:uppercase;
+  letter-spacing:.1em;font-size:.62rem;font-weight:600;opacity:.95}
+.price-badge .pb-num{display:block;font-family:"Anton",sans-serif;font-size:3.5rem;margin:3px 0}
+.price-badge .pb-num .pb-cur{font-size:1.5rem;vertical-align:super;margin-left:1px}
+.price-badge .pb-sub{display:block;font-family:"Oswald",sans-serif;text-transform:uppercase;
+  letter-spacing:.06em;font-size:.72rem;font-weight:600}
+.ho-note{margin:34px 0 0;font-family:"Barlow",sans-serif;font-size:.82rem;color:#8f9277;font-style:italic}
+
+/* bandeau preuve — 150 entraîneurs */
+.proof-band{background:#0d0e0a;padding:0 0 10px}
+.proof-band .wrap{padding:0 24px}
+.pb-inner{display:flex;align-items:center;gap:18px;background:var(--field-2);
+  border-left:4px solid var(--olive);border-radius:6px;padding:20px 26px}
+.pb-inner .pb-ic{width:50px;height:50px;flex:none;border-radius:50%;background:var(--olive);
+  display:grid;place-items:center}
+.pb-inner .pb-ic svg{width:27px;height:27px}
+.pb-inner .pb-txt{font-family:"Oswald",sans-serif;text-transform:uppercase;letter-spacing:.04em;
+  font-size:1.14rem;color:#EDE7D6;font-weight:300}
+.pb-inner .pb-txt b{color:#fff;font-weight:700}
+
+/* valeurs en pastilles olives */
+.values-row.pastilles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;
+  background:none;border:none;overflow:visible}
+.values-row.pastilles .v{background:none;padding:16px 10px;text-align:center}
+.values-row.pastilles .v .circle{width:78px;height:78px;border-radius:50%;background:var(--olive);
+  display:grid;place-items:center;margin:0 auto 16px;box-shadow:0 10px 22px -10px rgba(0,0,0,.6)}
+.values-row.pastilles .v .circle svg{width:38px;height:38px}
+.values-row.pastilles .v .w{font-family:"Anton",sans-serif;text-transform:uppercase;
+  font-size:1.4rem;color:#fff;letter-spacing:.03em}
+.values-row.pastilles .v .s{font-family:"Barlow",sans-serif;font-size:.88rem;color:#BFB99F;margin-top:6px}
+
+@media(max-width:900px){
+  .ho-grid{grid-template-columns:1fr;gap:26px}
+  .ho-media{max-width:430px;margin:4px auto 24px}
+  .price-badge{width:120px;height:120px;right:6px;bottom:-18px}
+  .price-badge .pb-num{font-size:2.7rem}
+  .hero-olive h1{font-size:clamp(2.6rem,10vw,3.6rem)}
+  .pb-inner{padding:18px 20px;gap:14px}
+  .pb-inner .pb-txt{font-size:1rem}
+  .values-row.pastilles{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .values-row.pastilles .v{padding:14px 6px}
+  .values-row.pastilles .v .w{font-size:1.15rem}
+}
