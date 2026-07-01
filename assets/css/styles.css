@@ -632,9 +632,9 @@ html{scroll-padding-top:104px}
   padding:6px 15px;transform:skewX(-7deg);margin-bottom:20px}
 .ho-eyebrow span{display:inline-block;transform:skewX(7deg)}
 .hero-olive h1{font-family:"Anton",sans-serif;text-transform:uppercase;
-  font-size:clamp(2.7rem,6.2vw,5rem);line-height:.9;letter-spacing:.01em;color:#fff;
+  font-size:clamp(2.7rem,6.2vw,5rem);line-height:.96;letter-spacing:.01em;color:#fff;
   text-shadow:none;max-width:none}
-.hero-olive h1 .olive{color:var(--olive);display:block}
+.hero-olive h1 .olive{color:var(--olive);display:block;margin-top:.08em}
 .ho-tags{margin-top:22px;font-family:"Oswald",sans-serif;text-transform:uppercase;
   letter-spacing:.07em;font-weight:500;font-size:1rem;color:#EDE7D6}
 .ho-tags b{color:var(--olive);margin:0 7px;font-weight:700}
@@ -653,10 +653,11 @@ html{scroll-padding-top:104px}
   letter-spacing:.06em;font-size:.72rem;font-weight:600}
 .ho-note{margin:34px 0 0;font-family:"Barlow",sans-serif;font-size:.82rem;color:#8f9277;font-style:italic}
 
-/* bandeau preuve — 150 entraîneurs */
-.proof-band{background:#0d0e0a;padding:0 0 10px}
+/* bandeau preuve — 150 entraîneurs (sur la photo du hero) */
+.proof-band{position:relative;z-index:2;background:transparent;padding:12px 0 46px}
 .proof-band .wrap{padding:0 24px}
-.pb-inner{display:flex;align-items:center;gap:18px;background:var(--field-2);
+.pb-inner{display:flex;align-items:center;gap:18px;background:rgba(23,31,14,.72);
+  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
   border-left:4px solid var(--olive);border-radius:6px;padding:20px 26px}
 .pb-inner .pb-ic{width:50px;height:50px;flex:none;border-radius:50%;background:var(--olive);
   display:grid;place-items:center}
